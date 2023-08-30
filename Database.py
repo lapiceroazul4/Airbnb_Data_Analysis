@@ -1,6 +1,6 @@
 import json 
 import pandas as pd
-from sqlalchemy import create_engine, Column, Integer, Float, String, Boolean, Date, Text, ForeignKey
+from sqlalchemy import create_engine, Column, Integer, Float, String, Boolean, Date, Text, ForeignKey, VARCHAR
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
@@ -17,10 +17,11 @@ Base = declarative_base()
 
 
 class Airbnbs(Base):
-    __tablename__ = 'Airbnb_Transactions'
+    __tablename__ = 'airbnb_transactions'
+    id_transaction = Column(Integer, primary_key=True)
     airbnb_id = Column(Integer, ForeignKey('airbnb_detail.id'))
-    host_id = Column(Integer, ForeignKey('host_table.host_id'))
-    neighbourhood_id = Column(Integer, ForeignKey('neighbourhood_table.neighbourhood_id'))
+    host_id = Column(Integer, ForeignKey('hosts.host_id'))
+    neighbourhood_id = Column(Integer, ForeignKey('neighbourhoods.neighbourhood_id'))
 
     def __init__ (self, session, engine):
         self.session = session
@@ -44,11 +45,11 @@ class Airbnbs(Base):
 
 class Hosts(Base):
 
-    __tablename__ = 'host_table'
+    __tablename__ = 'hosts'
 
     host_id = Column(Integer, primary_key=True)
     host_name = Column(String)
-    host_identity_verified = Column(Boolean)
+    host_identity_verified = Column(VARCHAR(10))
 
     def __init__ (self, session, engine):
         self.session = session
@@ -82,7 +83,7 @@ class Airbnb_Details(Base):
     service_fee = Column(Float)
     minimum_nights = Column(Integer)
     number_of_reviews = Column(Integer)
-    last_review = Column(String)
+    last_review = Column(Date)
     reviews_per_month = Column(Float)
     review_rate_number = Column(Float)
     calculated_host_listings_count = Column(Integer)

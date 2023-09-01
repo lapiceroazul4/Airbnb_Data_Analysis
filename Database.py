@@ -11,7 +11,7 @@ with open('db_config.json', 'r') as json_file:
     password = data["passwd"]
     server = data["server"]
     database = data["database"]
-    charset = "utf8mb4"
+    charset = "utf-8"
 
 db_url = f"mysql+pymysql://{usuario}:{password}@{server}/{database}?charset={charset}"
 Base = declarative_base()

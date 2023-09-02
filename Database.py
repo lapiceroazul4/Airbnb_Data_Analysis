@@ -1,6 +1,6 @@
-import json 
+import json
 import pandas as pd
-from sqlalchemy import create_engine, Column, Integer, Float, String, Boolean, Date, Text, ForeignKey
+from sqlalchemy import create_engine, Column, Integer, Float, String, Boolean, Date, Text, ForeignKey, VARCHAR
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
@@ -11,16 +11,18 @@ with open('db_config.json', 'r') as json_file:
     password = data["passwd"]
     server = data["server"]
     database = data["database"]
+    charset = "utf-8"
 
-db_url = f"mysql+pymysql://{usuario}:{password}@{server}/{database}"
+db_url = f"mysql+pymysql://{usuario}:{password}@{server}/{database}?charset={charset}"
 Base = declarative_base()
 
 
 class Airbnbs(Base):
-    __tablename__ = 'Airbnb_Transactions'
+    __tablename__ = 'airbnb_transactions'
+    id_transaction = Column(Integer, primary_key=True)
     airbnb_id = Column(Integer, ForeignKey('airbnb_detail.id'))
-    host_id = Column(Integer, ForeignKey('host_table.host_id'))
-    neighbourhood_id = Column(Integer, ForeignKey('neighbourhood_table.neighbourhood_id'))
+    host_id = Column(Integer, ForeignKey('hosts.host_id'))
+    neighbourhood_id = Column(Integer, ForeignKey('neighbourhoods.neighbourhood_id'))
 
     def __init__ (self, session, engine):
         self.session = session
@@ -30,7 +32,7 @@ class Airbnbs(Base):
     def create(self, new_airbnb):
         self.session.add(new_airbnb)
         self.session.commit()
-    
+
     #Update an Airbnb Transaction, update_data must bring all the information to update
     def update(self, update_data):
         for key, value in update_data.items():
@@ -44,11 +46,11 @@ class Airbnbs(Base):
 
 class Hosts(Base):
 
-    __tablename__ = 'host_table'
+    __tablename__ = 'hosts'
 
     host_id = Column(Integer, primary_key=True)
     host_name = Column(String)
-    host_identity_verified = Column(Boolean)
+    host_identity_verified = Column(VARCHAR(10))
 
     def __init__ (self, session, engine):
         self.session = session
@@ -58,7 +60,7 @@ class Hosts(Base):
     def create(self, new_host):
         self.session.add(new_host)
         self.session.commit()
-    
+
     #Update an Airbnb, update_data must bring all the information to update
     def update(self, update_data):
         for key, value in update_data.items():
@@ -82,7 +84,7 @@ class Airbnb_Details(Base):
     service_fee = Column(Float)
     minimum_nights = Column(Integer)
     number_of_reviews = Column(Integer)
-    last_review = Column(String)
+    last_review = Column(Date)
     reviews_per_month = Column(Float)
     review_rate_number = Column(Float)
     calculated_host_listings_count = Column(Integer)
@@ -97,7 +99,7 @@ class Airbnb_Details(Base):
     def create(self, Airbnb_Detail):
         self.session.add(Airbnb_Detail)
         self.session.commit()
-    
+
     #Update an Airbnb Detail, Airbnb_Detail must bring all the information to update
     def update(self, update_data):
         for key, value in update_data.items():
@@ -126,7 +128,7 @@ class Neighbourhoods(Base):
     def create(self, Neighbor):
         self.session.add(Neighbor)
         self.session.commit()
-    
+
     #Update an Neighbor, update_Neighbor must bring all the information to update
     def update(self, update_Neighbor):
         for key, value in update_Neighbor.items():

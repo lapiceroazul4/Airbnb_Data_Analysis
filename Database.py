@@ -1,4 +1,4 @@
-import json 
+import json
 import pandas as pd
 from sqlalchemy import create_engine, Column, Integer, Float, String, Boolean, Date, Text, ForeignKey, VARCHAR
 from sqlalchemy.ext.declarative import declarative_base
@@ -32,7 +32,7 @@ class Airbnbs(Base):
     def create(self, new_airbnb):
         self.session.add(new_airbnb)
         self.session.commit()
-    
+
     #Update an Airbnb Transaction, update_data must bring all the information to update
     def update(self, update_data):
         for key, value in update_data.items():
@@ -60,7 +60,7 @@ class Hosts(Base):
     def create(self, new_host):
         self.session.add(new_host)
         self.session.commit()
-    
+
     #Update an Airbnb, update_data must bring all the information to update
     def update(self, update_data):
         for key, value in update_data.items():
@@ -99,7 +99,7 @@ class Airbnb_Details(Base):
     def create(self, Airbnb_Detail):
         self.session.add(Airbnb_Detail)
         self.session.commit()
-    
+
     #Update an Airbnb Detail, Airbnb_Detail must bring all the information to update
     def update(self, update_data):
         for key, value in update_data.items():
@@ -128,7 +128,7 @@ class Neighbourhoods(Base):
     def create(self, Neighbor):
         self.session.add(Neighbor)
         self.session.commit()
-    
+
     #Update an Neighbor, update_Neighbor must bring all the information to update
     def update(self, update_Neighbor):
         for key, value in update_Neighbor.items():

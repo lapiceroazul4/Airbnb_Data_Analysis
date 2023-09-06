@@ -136,6 +136,4 @@ The error message indicates that there was an issue with the data being inserted
 
 After looking for a solution on internet we found that this error is typically related to character encoding issues. It seems like the data contains special characters or non-standard characters that are not supported by the character encoding of the database column. However, we haven’t solved the problem because all the columns appers to be properly encoded.
 
-## Github
 
-- https://github.com/lapiceroazul4/Airbnb_Data_Analysis

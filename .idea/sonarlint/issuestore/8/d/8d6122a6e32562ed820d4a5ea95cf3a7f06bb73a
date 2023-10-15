@@ -1,0 +1,6 @@
+
+†python:S101K"hRename class "Airbnb_Details" to match the regular expression ^_?([A-Z_][a-zA-Z0-9]*|[a-z_][a-z0-9_]*)$.(³âĞ±8ä·„³1
+|python:S117c"YRename this parameter "Airbnb_Detail" to match the regular expression ^[_a-z][a-z0-9_]*$.(°Åï¸şÿÿÿÿ8å·„³1
+spython:S117€"TRename this parameter "Neighbor" to match the regular expression ^[_a-z][a-z0-9_]*$.(¢åËú8å·„³1
+spython:S117…"[Rename this parameter "update_Neighbor" to match the regular expression ^[_a-z][a-z0-9_]*$.( Ë¸ä
+ppython:S117–"XRename this local variable "Session" to match the regular expression ^[_a-z][a-z0-9_]*$.(ìĞªÙ

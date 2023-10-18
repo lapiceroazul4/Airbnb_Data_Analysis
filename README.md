@@ -16,16 +16,16 @@
 
   
 
-## Ejecución del Proyecto
-1.Clone el repositorio 
+# Ejecución del Proyecto
+## Paso 1:Clone el repositorio .
 ```bash
 https://github.com/lapiceroazul4/Airbnb_Data_Analysis.git
 ```
-## Paso 2: Instalamos la Api de Yahoo Finance
+## Paso 2: Instalamos la Api de Yahoo Finance.
 ```bash
 pip install yfinance
 ```
-## Paso 3: Instalamos las dependencias necesarias
+## Paso 3: Instalamos las dependencias necesarias.
 ```bash
 pip install psycopg2
 pip install sqlalchemy
@@ -34,11 +34,12 @@ pip install sqlalchemy
 ```bash
 sudo docker run -d --name=postgres -p 5435:5432 -v postgres-volume:/var/lib/postgresql/data -e POSTGRES_PASSWORD=mysecretpass postgres
 ```
-## Paso 5: Entramos a la carpeta de la Api
+## Paso 5: Entramos a la carpeta de la Api.
 ```bash
 cd api_yahoo_finance
 ```
-## Paso 6: Corremos el proyecto,puedes corr
+## Paso 6: Puedes mirar el Eda y/o Correr el proyecto
+
 ```bash
 python load.py
 ```

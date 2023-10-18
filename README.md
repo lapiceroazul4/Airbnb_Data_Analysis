@@ -1,4 +1,4 @@
-# Workshop_spotify
+# Airbnb Project
 
 **Descripción del Proyecto**: "implementaremos la API de Yahoo Finance para obtener datos financieros de Airbnb y almacenarlos en una base de datos PostgreSQL que se ejecuta en un contenedor Docker".
 
@@ -10,9 +10,9 @@
 
 ## Estructura del Proyecto
 
-- **docker-compose.yml**: Archivo de configuración de Docker Compose para crear y gestionar contenedores Docker de Airflow.
+- **/airbnb**: En esta  carpeta esta todo lo relacionado con el dataset airbnb_data.csv (EDA y Transformaciones).
 
-- **/dags**: Contiene los archivos de DAG de Apache Airflow. Los archivos `.py` que orquestan el proceso ETL se encuentran aquí.
+- **/api_yahoo_finance**: Esta carpeta contiene todo lo relacionado con la Api de Yahoo Finance(EDA, Transformaciones y Carga a Base De Datos).
 
   
 

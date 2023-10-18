@@ -6,7 +6,7 @@
 - Python 3.11.6
 - Docker
 - PostgreSQL (ejecutado en un contenedor de Docker)
-- sqlalchemy 
+
 
 ## Estructura del Proyecto
 

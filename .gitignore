@@ -1,4 +1,8 @@
-db_config.json
+airbnb/db_config.json
+.ipynb_checkpoints/
 Airbnb_Open_Data.csv
-_pycache_
+_pycache_/
 import.csv
+.idea/
+/.idea/
+api_yahoo_finance/_pycache_

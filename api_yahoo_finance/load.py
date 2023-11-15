@@ -5,7 +5,7 @@ from api_yf_transform import cambiar_a_columna_date, borrar_columns, read_Data
 # Parámetros de conexión
 db_params = {
     "host": "localhost",          # La dirección IP o el nombre de host del contenedor
-    "port": "5435",               # El puerto mapeado del contenedor (5435)
+    "port": "5432",               # El puerto mapeado del contenedor (5435)
     "database": "postgres",       # Nombre de la base de datos (por defecto)
     "user": "postgres",           # Usuario de la base de datos
     "password": "mysecretpass",   # Contraseña del usuario

@@ -67,6 +67,7 @@ def insert_Data_to_Database(df_airbnb):
 
 
 def read_Data_From_Database():
+    print("yes")
     conn=database_connection()
     query=f'select * from {table}'
     df_airbnb=pd.read_sql(query,conn)

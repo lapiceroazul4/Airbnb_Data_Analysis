@@ -82,4 +82,4 @@ def read_Data_From_Database():
 #df_airbnb=pd.read_csv("Airbnb_Open_Data3.csv", low_memory=False, na_values=[''])
 #print(df_airbnb.head(2))
 #insert_Data_to_Database(df_airbnb)
-#ead_Data_From_Database()
+#read_Data_From_Database()

@@ -1,9 +1,8 @@
 from datetime import timedelta
-import yfinance as yf
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from datetime import datetime
-from pipeline import read_data_from_airbnb_Database, read_data_from_api_yahoo_finance, transform_Airbnb_Dataset, transform_Yahoo_Finance_Api
+from pipeline import read_data_from_airbnb_Database, read_data_from_api_yahoo_finance, transform_Airbnb_Dataset, transform_Yahoo_Finance_Api,load_db,load_api,kafka
 
 default_args = {
     'owner': 'airflow',
@@ -43,21 +42,22 @@ with DAG(
         python_callable=transform_Yahoo_Finance_Api,
         )
     
-    # merge = PythonOperator(
-    #     task_id='merge',
-    #     python_callable=merge,
-    # )
+    load_db = PythonOperator(
+        task_id ='load_db',
+        python_callable = load_db,
+        provide_context = True,
+    )
+    load_db = PythonOperator(
+        task_id ='load_api',
+        python_callable = load_db,
+        provide_context = True,
+    )
 
-    # load = PythonOperator(
-    #     task_id='load',
-    #     python_callable=load,
-    # )
-    # load_drive = PythonOperator(
-    #     task_id='load_drive',
-    #     python_callable=load_drive,
-    # )
-
-    read_data_from_api_yahoo_finance >> read_data_from_api_yahoo_finance 
-    #>> merge
-    read_data_from_airbnb_Database >> transform_Yahoo_Finance_Api
-    # >> merge >> load >> load_drive
+    kafka = PythonOperator(
+        task_id ='kafka',
+        python_callable = kafka,
+        provide_context = True,
+    )
+    
+    read_data_from_api_yahoo_finance >> read_data_from_api_yahoo_finance >> load_api >> kafka
+    read_data_from_airbnb_Database >> transform_Yahoo_Finance_Api >> load_db >> kafka
